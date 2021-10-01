@@ -17,7 +17,7 @@ public class MainController {
         ResponseDto responseDto = new ResponseDto();
 
         responseDto.setId(123);
-        responseDto.setMsg("Csáó");
+        responseDto.setMsg("Üdv");
 
         return  responseDto;
     }
