@@ -1,8 +1,14 @@
 package hu.me.iit.webalk.firstApp;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+
 public class ArticleDto {
+    @NotBlank
     private String author;
+    @NotBlank
     private String title;
+    @Min(10)
     private Integer pages;
 
     public String getAuthor() {
