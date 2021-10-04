@@ -2,6 +2,8 @@ package hu.me.iit.webalk.firstApp;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,12 +18,12 @@ public class MainController {
     }
 
     @PostMapping(path="articles/")
-    public void newArticle(@RequestBody ArticleDto articleDto){
+    public void newArticle(@RequestBody @Valid ArticleDto articleDto){
         articles.add(articleDto);
     }
 
-    @PostMapping(path="articles/{id}")
-    public void replaceArticle(@PathVariable("id") String id, @RequestBody ArticleDto articleDto){
+    @PutMapping(path="articles/{id}")
+    public void replaceArticle(@PathVariable("id") String id, @RequestBody @Valid ArticleDto articleDto){
         int found = findArticleByID(id);
 
         if(found != -1){
@@ -29,6 +31,17 @@ public class MainController {
             foundedDto.setPages(articleDto.getPages());
             foundedDto.setAuthor(articleDto.getAuthor());
         }
+    }
+
+    @GetMapping(path="articles/{id}")
+    public ArticleDto getNameById(@PathVariable("id") String id){
+        int found = findArticleByID(id);
+        ArticleDto foundedDto = new ArticleDto();
+
+        if(found != -1){
+            foundedDto = articles.get(found);
+        }
+        return foundedDto;
     }
 
     @DeleteMapping (path="articles/{id}")
