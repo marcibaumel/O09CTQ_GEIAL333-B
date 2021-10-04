@@ -1,24 +1,53 @@
 package hu.me.iit.webalk.firstApp;
 
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.awt.*;
-
-@Controller
+@RestController
 public class MainController {
 
-    @GetMapping(path="/", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    private ResponseDto gyoker(){
-        ResponseDto responseDto = new ResponseDto();
+    private final List<ArticleDto> articles = new ArrayList<>();
 
-        responseDto.setId(123);
-        responseDto.setMsg("Üdv");
+    @GetMapping(path="/articles", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<ArticleDto> allArticles(){
+        return articles;
+    }
 
-        return  responseDto;
+    @PostMapping(path="articles/")
+    public void newArticle(@RequestBody ArticleDto articleDto){
+        articles.add(articleDto);
+    }
+
+    @PostMapping(path="articles/{id}")
+    public void replaceArticle(@PathVariable("id") String id, @RequestBody ArticleDto articleDto){
+        int found = findArticleByID(id);
+
+        if(found != -1){
+            ArticleDto foundedDto = articles.get(found);
+            foundedDto.setPages(articleDto.getPages());
+            foundedDto.setAuthor(articleDto.getAuthor());
+        }
+    }
+
+    @DeleteMapping (path="articles/{id}")
+    public void deleteArticle(@PathVariable("id") String id){
+        int found = findArticleByID(id);
+        if(found != -1){
+            articles.remove(found);
+        }
+    }
+
+    //Find article by the given id int the mock DTO
+    private int findArticleByID(String id){
+        int found = -1;
+        for (int i = 0; i<articles.size(); i++){
+            if(articles.get(i).getTitle().equals(id)){
+                found = i;
+                break;
+            }
+        }
+        return found;
     }
 }
