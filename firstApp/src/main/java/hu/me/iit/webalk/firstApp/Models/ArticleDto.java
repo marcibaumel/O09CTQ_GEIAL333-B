@@ -1,4 +1,4 @@
-package hu.me.iit.webalk.firstApp;
+package hu.me.iit.webalk.firstApp.Models;
 
 import org.hibernate.validator.constraints.Range;
 

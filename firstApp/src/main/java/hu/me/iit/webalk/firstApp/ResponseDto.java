@@ -1,6 +1,11 @@
 package hu.me.iit.webalk.firstApp;
 
 public class ResponseDto {
+
+    /*
+    3. óra gyakorlatáról való JSON hívás bemutatására szolgáló kódrészlet
+     */
+
     int id;
     String msg;
 

@@ -1,5 +1,8 @@
-package hu.me.iit.webalk.firstApp;
+package hu.me.iit.webalk.firstApp.Services;
 
+import hu.me.iit.webalk.firstApp.Models.ArticleDto;
+import hu.me.iit.webalk.firstApp.Repositories.ArticleRepository;
+import hu.me.iit.webalk.firstApp.Exceptions.TooMuchArticleException;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

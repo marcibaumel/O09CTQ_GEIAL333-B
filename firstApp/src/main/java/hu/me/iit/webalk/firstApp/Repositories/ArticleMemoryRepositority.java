@@ -1,5 +1,6 @@
-package hu.me.iit.webalk.firstApp;
+package hu.me.iit.webalk.firstApp.Repositories;
 
+import hu.me.iit.webalk.firstApp.Models.ArticleDto;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -7,6 +8,8 @@ import java.util.List;
 
 @Component
 public class ArticleMemoryRepositority implements ArticleRepository {
+
+    //Mock object ->DB
     private final List<ArticleDto> articles = new ArrayList<>();
 
     private int findArticleById(Long id) {
