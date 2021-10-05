@@ -11,33 +11,30 @@ import java.util.List;
 @RequestMapping(path="/article")
 public class MainController {
 
-    //OLD VERSION
-    //private final List<ArticleDto> articles = new ArrayList<>();
+    private final ArticleService articleService;
 
-    private ArticleService articleService;
-    @GetMapping(path="/articles", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<ArticleDto> allArticles(){
+    public MainController(ArticleService articleService) {
+        this.articleService = articleService;
+    }
+
+    @GetMapping(path="", produces= MediaType.APPLICATION_JSON_VALUE)
+    public List<ArticleDto> allArticles() {
         return articleService.findAll();
     }
 
-    @PostMapping(path="articles/")
-    public void newArticle(@RequestBody @Valid ArticleDto articleDto){
+    @PostMapping(path="")
+    public void newArticle(@RequestBody @Valid ArticleDto articleDto) {
         articleService.save(articleDto);
     }
 
-    @PutMapping(path="articles/{id}")
-    public void replaceArticle(@PathVariable("id") String id, @RequestBody @Valid ArticleDto articleDto){
-       articleService.save(articleDto);
+    //TODO give the id parameter
+    @PutMapping(path="/")
+    public void replaceArticle(@RequestBody @Valid ArticleDto articleDto) {
+        articleService.save(articleDto);
     }
 
-    @GetMapping(path="articles/{id}")
-    public ArticleDto getNameById(@PathVariable("id") Long id){
-        return articleService.getById(id);
+    @DeleteMapping (path="/{id}")
+    public void deleteArticle(@PathVariable("id") Long id) {
+        articleService.deleteById(id);
     }
-
-    @DeleteMapping (path="articles/{id}")
-    public void deleteArticle(@PathVariable("id") Long id){
-       articleService.deleteById(id);
-    }
-
 }

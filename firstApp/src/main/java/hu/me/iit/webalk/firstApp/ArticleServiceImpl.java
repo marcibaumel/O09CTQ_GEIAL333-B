@@ -6,31 +6,33 @@ import java.util.List;
 
 @Component
 public class ArticleServiceImpl implements ArticleService {
+    private final int MAXIMUM_ARTICLE_COUNT = 10;
+    private final ArticleRepository articleRepository;
 
-    private ArticleRepositority articleRepositority;
-    private final int MAX_SIZE_OF_ARICALES = 10;
+    public ArticleServiceImpl(ArticleRepository articleRepository) {
+        this.articleRepository = articleRepository;
+    }
+
     @Override
     public List<ArticleDto> findAll() {
-        return articleRepositority.findAll();
+        return articleRepository.findAll();
     }
 
     @Override
     public ArticleDto getById(Long id) {
-        return articleRepositority.getById(id);
+        return articleRepository.getById(id);
     }
 
     @Override
     public Long save(ArticleDto articleDto) {
-
-        if(articleRepositority.findAll().size() >= MAX_SIZE_OF_ARICALES){
+        if (articleRepository.findAll().size() >= MAXIMUM_ARTICLE_COUNT) {
             throw new TooMuchArticleException();
         }
-        return articleRepositority.save(articleDto);
-
+        return articleRepository.save(articleDto);
     }
 
     @Override
     public void deleteById(Long id) {
-        articleRepositority.deleteById(id);
+        articleRepository.deleteById(id);
     }
 }

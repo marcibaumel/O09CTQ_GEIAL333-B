@@ -2,7 +2,7 @@ package hu.me.iit.webalk.firstApp;
 
 import java.util.List;
 
-public interface ArticleRepositority {
+public interface ArticleRepository {
     List<ArticleDto> findAll();
     ArticleDto getById(Long id);
     Long save(ArticleDto articleDto);
