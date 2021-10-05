@@ -6,28 +6,21 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 public class ArticleDto {
-    /*
-    1, mvn dependency
-    2, javax.validation.constraints
-    3, validation implementations
-    4, give the validation rules
-    +Exceptions generating in the background
-     */
 
     @NotBlank
     private String author;
     @NotBlank
     private String title;
-    @Range(min=1, max=30)
+    @Range(min=1, max=30, message = "Az oldal szám nem megfelelő, 1 és 30 között kell lennie")
     private Integer pages;
     @Min(1)
-    private Integer id;
+    private Long id;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,10 +50,11 @@ public class ArticleDto {
 
     @Override
     public String toString() {
-        return "Article{" +
+        return "ArticleDto{" +
                 "author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", pages=" + pages +
+                ", id=" + id +
                 '}';
     }
 }

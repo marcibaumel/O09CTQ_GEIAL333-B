@@ -8,59 +8,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping(path="/article")
 public class MainController {
 
-    private final List<ArticleDto> articles = new ArrayList<>();
+    //OLD VERSION
+    //private final List<ArticleDto> articles = new ArrayList<>();
 
+    private ArticleService articleService;
     @GetMapping(path="/articles", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<ArticleDto> allArticles(){
-        return articles;
+        return articleService.findAll();
     }
 
     @PostMapping(path="articles/")
     public void newArticle(@RequestBody @Valid ArticleDto articleDto){
-        articles.add(articleDto);
+        articleService.save(articleDto);
     }
 
     @PutMapping(path="articles/{id}")
     public void replaceArticle(@PathVariable("id") String id, @RequestBody @Valid ArticleDto articleDto){
-        int found = findArticleByID(id);
-
-        if(found != -1){
-            ArticleDto foundedDto = articles.get(found);
-            foundedDto.setPages(articleDto.getPages());
-            foundedDto.setAuthor(articleDto.getAuthor());
-        }
+       articleService.save(articleDto);
     }
 
     @GetMapping(path="articles/{id}")
-    public ArticleDto getNameById(@PathVariable("id") String id){
-        int found = findArticleByID(id);
-        ArticleDto foundedDto = new ArticleDto();
-
-        if(found != -1){
-            foundedDto = articles.get(found);
-        }
-        return foundedDto;
+    public ArticleDto getNameById(@PathVariable("id") Long id){
+        return articleService.getById(id);
     }
 
     @DeleteMapping (path="articles/{id}")
-    public void deleteArticle(@PathVariable("id") String id){
-        int found = findArticleByID(id);
-        if(found != -1){
-            articles.remove(found);
-        }
+    public void deleteArticle(@PathVariable("id") Long id){
+       articleService.deleteById(id);
     }
 
-    //Find article by the given id int the mock DTO
-    private int findArticleByID(String id){
-        int found = -1;
-        for (int i = 0; i<articles.size(); i++){
-            if(articles.get(i).getId().equals(id)){
-                found = i;
-                break;
-            }
-        }
-        return found;
-    }
 }
