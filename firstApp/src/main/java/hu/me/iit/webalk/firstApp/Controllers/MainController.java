@@ -28,7 +28,6 @@ public class MainController {
         articleService.save(articleDto);
     }
 
-    //TODO give the id parameter
     @PutMapping(path="/")
     public void replaceArticle(@RequestBody @Valid ArticleDto articleDto) {
         articleService.save(articleDto);

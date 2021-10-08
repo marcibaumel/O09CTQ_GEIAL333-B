@@ -15,7 +15,7 @@ public class ArticleMemoryRepositority implements ArticleRepository {
     private int findArticleById(Long id) {
         int found = -1;
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(id)) {
+            if (articles.get(i).getId().equals(id)) {
                 found = i;
                 break;
             }
