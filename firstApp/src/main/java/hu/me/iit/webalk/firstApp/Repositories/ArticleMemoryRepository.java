@@ -32,8 +32,6 @@ public class ArticleMemoryRepository implements ArticleRepository {
     public ArticleDto getById(Long id) {
 
        int articleByIdIndex = findArticleById(id);
-       //TODO
-       //return articleByIdIndex == -1  null: articles.get(articleByIdIndex);
 
         if(articleByIdIndex == -1){
             return null;
