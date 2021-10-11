@@ -7,12 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ArticleMemoryRepositority implements ArticleRepository {
+public class ArticleMemoryRepository implements ArticleRepository {
 
     //Mock object ->DB
     private final List<ArticleDto> articles = new ArrayList<>();
 
-    private int findArticleById(Long id) {
+    public int findArticleById(Long id) {
         int found = -1;
         for (int i = 0; i < articles.size(); i++) {
             if (articles.get(i).getId().equals(id)) {
@@ -30,7 +30,17 @@ public class ArticleMemoryRepositority implements ArticleRepository {
 
     @Override
     public ArticleDto getById(Long id) {
-        return null;
+
+       int articleByIdIndex = findArticleById(id);
+       //TODO
+       //return articleByIdIndex == -1  null: articles.get(articleByIdIndex);
+
+        if(articleByIdIndex == -1){
+            return null;
+        }
+        else{
+            return articles.get(articleByIdIndex);
+        }
     }
 
     @Override
@@ -41,6 +51,7 @@ public class ArticleMemoryRepositority implements ArticleRepository {
             ArticleDto foundArticle = articles.get(found);
             foundArticle.setAuthor(articleDto.getAuthor());
             foundArticle.setPages(articleDto.getPages());
+            foundArticle.setTitle(articleDto.getTitle());
         } else {
             articles.add(articleDto);
         }

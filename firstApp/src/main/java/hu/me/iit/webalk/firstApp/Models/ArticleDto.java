@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.Objects;
 
 public class ArticleDto {
 
@@ -56,5 +57,18 @@ public class ArticleDto {
                 ", pages=" + pages +
                 ", id=" + id +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ArticleDto that = (ArticleDto) o;
+        return Objects.equals(author, that.author) && Objects.equals(title, that.title) && Objects.equals(pages, that.pages) && id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(author, title, pages, id);
     }
 }
