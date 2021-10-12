@@ -8,5 +8,18 @@ public class ServiceImpl implements Service{
     }
 
     @Override
-    public void calculate() { }
+    public void calculate() {
+        dependency.helpNoParameterNoReturnValue();
+    }
+
+    @Override
+    public int returnFive() {
+        return 5;
+    }
+
+    @Override
+    public int callHelpAndUseReturnValue() {
+        int result = dependency.helpNoParameterReturnValue();
+        return result;
+    }
 }
