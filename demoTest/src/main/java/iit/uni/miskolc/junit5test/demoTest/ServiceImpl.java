@@ -1,8 +1,10 @@
 package iit.uni.miskolc.junit5test.demoTest;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("NeededService")
 public class ServiceImpl implements Service{
     private final Dependency dependency;
 
