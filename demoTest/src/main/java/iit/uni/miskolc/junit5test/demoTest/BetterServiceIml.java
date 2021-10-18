@@ -31,4 +31,9 @@ public class BetterServiceIml implements Service{
     public String getImportantAbstract(String a) {
         return null;
     }
+
+    @Override
+    public String getFirst3Char(String a) {
+        return null;
+    }
 }

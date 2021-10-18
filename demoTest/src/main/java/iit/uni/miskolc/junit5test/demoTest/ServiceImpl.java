@@ -35,14 +35,12 @@ public class ServiceImpl implements Service{
 
     @Override
     public String getImportantAbstract(String a) {
-
         String goal = getFirst3Char(a);
-
         String result = dependency.important(goal);
-
         return result;
     }
 
+    @Override
     public String getFirst3Char(String a){
         String getFirstThreeCharacter = a.substring(0, Math.min(a.length(), 3));
         String result = getFirstThreeCharacter+"...";
