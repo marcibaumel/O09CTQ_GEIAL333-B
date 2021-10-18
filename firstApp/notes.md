@@ -61,3 +61,7 @@ Spring injection:
 Lombok @RequiredArgsConstructor  
 
 Class -> Managed Bean
+
+## 10.18.
+
+Repo - Service - Controller
