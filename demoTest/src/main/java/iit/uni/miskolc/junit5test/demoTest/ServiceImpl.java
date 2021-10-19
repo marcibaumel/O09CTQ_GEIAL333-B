@@ -24,8 +24,8 @@ public class ServiceImpl implements Service{
 
     @Override
     public int callHelpAndUseReturnValue() {
-        int result = dependency.helpNoParameterReturnValue();
-        return result;
+        return dependency.helpNoParameterReturnValue();
+
     }
 
     @Override
@@ -36,8 +36,8 @@ public class ServiceImpl implements Service{
     @Override
     public String getImportantAbstract(String a) {
         String goal = getFirst3Char(a);
-        String result = dependency.important(goal);
-        return result;
+        return dependency.important(goal);
+
     }
 
     @Override

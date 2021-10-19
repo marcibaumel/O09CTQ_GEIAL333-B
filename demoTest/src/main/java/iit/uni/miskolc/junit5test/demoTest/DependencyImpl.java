@@ -1,7 +1,7 @@
 package iit.uni.miskolc.junit5test.demoTest;
 
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
+
 @Component
 public class DependencyImpl implements Dependency {
     @Override
@@ -13,14 +13,10 @@ public class DependencyImpl implements Dependency {
     }
 
     @Override
-    public void helpWithParameterNoReturnValue(int a) {
-
-    }
+    public void helpWithParameterNoReturnValue(int a) {}
 
     @Override
-    public String important(String a) {
-        return  "<b>"+a+"</b>";
-    }
+    public String important(String a) {return  "<b>"+a+"</b>";}
 
 
 }
