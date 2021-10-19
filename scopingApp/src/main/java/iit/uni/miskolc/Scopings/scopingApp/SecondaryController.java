@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+//@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SecondaryController {
 
     private final Service service;

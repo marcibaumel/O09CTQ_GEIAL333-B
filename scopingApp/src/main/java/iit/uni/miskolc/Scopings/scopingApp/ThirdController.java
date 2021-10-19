@@ -10,7 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class ThirdController {
 
     /*
-    Szorgalmi builder
+        Szorgalmi: builder
+        Szorgalmi: scope saját osztállyal
+        Szorgalmi: FAT jar vs normal jar
+        Szorgalmi: Kérdés sor webalk rajzolós, hangman
+        Véletelen elem kiszedése
+        Ne a Math.random-ot használjuk
      */
 
     private final ApplicationContext context;
@@ -23,7 +28,7 @@ public class ThirdController {
     @ResponseBody
     @GetMapping("/c")
     public String getARoot(){
-        Service service = context.getBean("serviceImpl", Service.class);
+        Service service = context.getBean("myService", Service.class);
         return service.getValue();
 
     }
