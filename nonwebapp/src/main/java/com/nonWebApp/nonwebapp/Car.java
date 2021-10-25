@@ -12,6 +12,18 @@ public class Car {
     HF: letsztelni az autót
      */
 
+    public Wheel[] getWheels() {
+        return wheels;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public String getTipus() {
+        return tipus;
+    }
+
     public Car(Wheel[] wheels, Motor motor, String tipus) throws NotRightData{
             if (wheels.length != 4 || motor == null || tipus == null) {
                 throw new NotRightData();
@@ -19,7 +31,6 @@ public class Car {
             this.wheels = wheels;
             this.motor = motor;
             this.tipus = tipus;
-
     }
 
     @Override
