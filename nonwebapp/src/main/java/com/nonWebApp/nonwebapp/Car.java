@@ -7,6 +7,10 @@ public class Car {
     private final Motor motor;
     private final String tipus;
 
+    /*
+    Hf:
+    wht if null, what if wheels not 4
+     */
     public Car(Wheel[] wheels, Motor motor, String tipus) {
         this.wheels = wheels;
         this.motor = motor;
@@ -16,7 +20,7 @@ public class Car {
     @Override
     public String toString() {
         return "Car{" +
-                "wheels=" + Arrays.toString(wheels) +
+                "wheels=" + wheels[0].toString() +
                 ", motor=" + motor +
                 ", tipus='" + tipus + '\'' +
                 '}';
