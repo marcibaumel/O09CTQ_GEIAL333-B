@@ -25,6 +25,16 @@ class CarTest {
         assertEquals(type, autoAstra.getTipus());
     }
 
+/*
+    @Test(expected = NotRightData.class)
+    void testCarWithBadData(){
+        motor = new BelsoEgesuMotor(100, 1600);
+        type = "Opel Astra";
+        Car autoAstra = new Car(getKerekek(), motor, type);
+        assertEquals(type, autoAstra.getTipus());
+    }
+ */
+
     private static Wheel[] getKerekek(){
         int sizeOfTheArray = 4;
         Wheel[] kerekek = new Wheel[sizeOfTheArray];
