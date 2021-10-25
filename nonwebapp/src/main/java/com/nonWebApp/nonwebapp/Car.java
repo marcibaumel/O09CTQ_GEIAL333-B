@@ -11,6 +11,7 @@ public class Car {
     TODO:
     Hf: wht if null, what if wheels not 4
      */
+
     public Car(Wheel[] wheels, Motor motor, String tipus) {
         this.wheels = wheels;
         this.motor = motor;

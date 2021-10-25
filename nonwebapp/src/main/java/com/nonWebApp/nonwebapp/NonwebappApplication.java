@@ -7,17 +7,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
-public class NonwebappApplication {
+public class NonwebappApplication implements CommandLineRunner {
 	/*
 	TODO:
-	Hf ez spring-be
 	HF: letsztelni az autót
 	 */
 	public static void main(String[] args) {
-		Motor motor = new BelsoEgesuMotor(100, 1600);
-		Car autoAstra = new Car(getKerekek(), motor, "Opel Astra");
-		System.out.println(autoAstra);
-		//SpringApplication.run(NonwebappApplication.class, args);
+		SpringApplication.run(NonwebappApplication.class, args);
 	}
 
 	private static Wheel[] getKerekek(){
@@ -26,5 +22,12 @@ public class NonwebappApplication {
 			kerekek[i] = new WheelImpl(205, 15, 65);
 		}
 		return kerekek;
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		Motor motor = new BelsoEgesuMotor(100, 1600);
+		Car autoAstra = new Car(getKerekek(), motor, "Opel Astra");
+		System.out.println(autoAstra);
 	}
 }
