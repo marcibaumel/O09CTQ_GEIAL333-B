@@ -9,13 +9,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //@SpringBootApplication
 public class NonwebappApplication implements CommandLineRunner {
 
+	private Motor motor;
+	private String type;
+
 	public static void main(String[] args) {
 		SpringApplication.run(NonwebappApplication.class, args);
 	}
 
 	private static Wheel[] getKerekek(){
-		Wheel[] kerekek = new Wheel[4];
-		for (int i = 0; i<4; i++){
+		int sizeOfTheArray = 4;
+		Wheel[] kerekek = new Wheel[sizeOfTheArray];
+		for (int i = 0; i<sizeOfTheArray; i++){
 			kerekek[i] = new WheelImpl(205, 15, 65);
 		}
 		return kerekek;
@@ -23,8 +27,9 @@ public class NonwebappApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Motor motor = new BelsoEgesuMotor(100, 1600);
-		Car autoAstra = new Car(getKerekek(), motor, "Opel Astra");
+		motor = new BelsoEgesuMotor(100, 1600);
+		type = "Opel Astra";
+		Car autoAstra = new Car(getKerekek(), motor, type);
 		System.out.println(autoAstra);
 	}
 }
