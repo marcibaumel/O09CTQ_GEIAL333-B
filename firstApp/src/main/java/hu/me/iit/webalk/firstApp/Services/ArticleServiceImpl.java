@@ -9,6 +9,7 @@ import java.util.List;
 
 @Component
 public class ArticleServiceImpl implements ArticleService {
+
     private final int MAXIMUM_ARTICLE_COUNT = 10;
     private final ArticleRepository articleRepository;
 

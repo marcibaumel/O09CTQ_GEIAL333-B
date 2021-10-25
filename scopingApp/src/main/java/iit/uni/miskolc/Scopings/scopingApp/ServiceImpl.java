@@ -2,9 +2,10 @@ package iit.uni.miskolc.Scopings.scopingApp;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
-@Controller
+@Component
 public class ServiceImpl implements Service{
 
     private final Dependency dependency;
