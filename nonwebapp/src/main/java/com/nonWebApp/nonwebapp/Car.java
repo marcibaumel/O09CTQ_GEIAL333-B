@@ -8,8 +8,8 @@ public class Car {
     private final String tipus;
 
     /*
-    Hf:
-    wht if null, what if wheels not 4
+    TODO:
+    Hf: wht if null, what if wheels not 4
      */
     public Car(Wheel[] wheels, Motor motor, String tipus) {
         this.wheels = wheels;

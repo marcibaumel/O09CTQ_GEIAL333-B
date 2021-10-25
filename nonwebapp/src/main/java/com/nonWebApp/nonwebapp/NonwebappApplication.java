@@ -8,9 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
 public class NonwebappApplication {
-
 	/*
+	TODO:
 	Hf ez spring-be
+	HF: letsztelni az autót
 	 */
 	public static void main(String[] args) {
 		Motor motor = new BelsoEgesuMotor(100, 1600);
@@ -26,6 +27,4 @@ public class NonwebappApplication {
 		}
 		return kerekek;
 	}
-
-
 }
