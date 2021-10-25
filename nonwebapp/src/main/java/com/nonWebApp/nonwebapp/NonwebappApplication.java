@@ -8,10 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //@SpringBootApplication
 public class NonwebappApplication implements CommandLineRunner {
-	/*
-	TODO:
-	HF: letsztelni az autót
-	 */
+
 	public static void main(String[] args) {
 		SpringApplication.run(NonwebappApplication.class, args);
 	}

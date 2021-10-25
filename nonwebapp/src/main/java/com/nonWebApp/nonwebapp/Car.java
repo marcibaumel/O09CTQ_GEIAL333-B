@@ -10,9 +10,13 @@ public class Car {
     /*
     TODO:
     Hf: wht if null, what if wheels not 4
+    HF: letsztelni az autót
      */
 
     public Car(Wheel[] wheels, Motor motor, String tipus) {
+        if(wheels.length != 4){
+            //throw NotGoodWheel;
+        }
         this.wheels = wheels;
         this.motor = motor;
         this.tipus = tipus;
