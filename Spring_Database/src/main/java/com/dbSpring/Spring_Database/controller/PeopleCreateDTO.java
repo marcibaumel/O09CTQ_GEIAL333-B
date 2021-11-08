@@ -1,26 +1,23 @@
-package com.dbSpring.Spring_Database;
+package com.dbSpring.Spring_Database.controller;
 
-import com.sun.istack.NotNull;
+import com.dbSpring.Spring_Database.repository.PeopleModel;
+import com.dbSpring.Spring_Database.service.People;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-public class PeopleDTO {
-    private Long id;
+public class PeopleCreateDTO {
+
     @NotEmpty
     private String name;
     @Size(min = 18, max = 60)
     private int age;
 
-    public PeopleDTO() {
+    public PeopleCreateDTO() {
     }
 
-    public Long getId() {
-        return id;
-    }
+    public PeopleCreateDTO(People people) {
 
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -39,8 +36,7 @@ public class PeopleDTO {
         this.age = age;
     }
 
-    public PeopleDTO(People people){
-        this.id = people.getId();
+    public PeopleCreateDTO(PeopleModel people){
         this.name = people.getName();
         this.age = people.getAge();
     }

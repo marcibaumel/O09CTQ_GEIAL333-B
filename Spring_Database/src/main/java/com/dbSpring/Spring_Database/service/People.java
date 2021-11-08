@@ -1,11 +1,9 @@
-package com.dbSpring.Spring_Database;
+package com.dbSpring.Spring_Database.service;
 
-import javax.persistence.*;
+import com.dbSpring.Spring_Database.repository.PeopleModel;
 
-@Entity
 public class People {
-    @Id
-    @GeneratedValue
+
     private Long id;
 
     private String name;
@@ -34,5 +32,8 @@ public class People {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public People(PeopleModel people) {
     }
 }
