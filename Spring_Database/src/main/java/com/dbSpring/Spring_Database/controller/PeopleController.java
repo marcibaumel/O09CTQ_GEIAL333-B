@@ -1,16 +1,15 @@
 package com.dbSpring.Spring_Database.controller;
 
-
-import com.dbSpring.Spring_Database.repository.PeopleModel;
 import com.dbSpring.Spring_Database.service.People;
 import com.dbSpring.Spring_Database.service.PeopleService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/people")
+@RequestMapping("people")
 public class PeopleController {
 
     private final PeopleService peopleService;
@@ -20,20 +19,25 @@ public class PeopleController {
     }
 
     @GetMapping
-    public Iterable<PeopleDTO> getAllPeople(){
-        List <PeopleDTO> peopleDTOList = new ArrayList<>();
-        for (People people:peopleService.getAllPeople()){
-            peopleDTOList.add(new PeopleDTO(people));
+    public Iterable<PeopleDto> getAllPeople() {
+        List<PeopleDto> peopleDtoList = new ArrayList<>();
+        for(People people :  peopleService.getAllPeople()){
+            peopleDtoList.add(new PeopleDto(people));
         }
-        return peopleDTOList;
+
+        return peopleDtoList;
     }
 
-    @PostMapping("/{people}")
-    public void save(@RequestBody PeopleCreateDTO model){
-        peopleService.addPeople(toPeople(model));
+    @PostMapping(consumes = "application/json")
+    public PeopleDto save(@RequestBody @Valid PeopleCreateDto peopleCreateDto){
+        return new PeopleDto(peopleService.create(peopleCreateDto.toPeople()));
     }
 
-    public PeopleModel toPeople(PeopleCreateDTO peopleCreateDTO){
-        return new PeopleModel(null, peopleCreateDTO.getName(), peopleCreateDTO.getAge());
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+        peopleService.deleteById(id);
     }
+
+
+
 }

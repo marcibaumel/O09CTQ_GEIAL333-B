@@ -1,23 +1,24 @@
 package com.dbSpring.Spring_Database.controller;
 
-import com.dbSpring.Spring_Database.repository.PeopleModel;
 import com.dbSpring.Spring_Database.service.People;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 
-public class PeopleDTO {
+public class PeopleDto {
     private Long id;
     @NotEmpty
     private String name;
-    @Size(min = 18, max = 60)
+    @Min(18)
     private int age;
 
-    public PeopleDTO() {
+    public PeopleDto() {
     }
 
-    public PeopleDTO(People people) {
-
+    public PeopleDto(People people) {
+        this.id = people.getId();
+        this.name = people.getName();
+        this.age = people.getAge();
     }
 
     public Long getId() {
@@ -42,11 +43,5 @@ public class PeopleDTO {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public PeopleDTO(PeopleModel people){
-        this.id = people.getId();
-        this.name = people.getName();
-        this.age = people.getAge();
     }
 }
