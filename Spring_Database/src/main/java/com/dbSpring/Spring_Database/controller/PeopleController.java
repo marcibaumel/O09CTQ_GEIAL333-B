@@ -2,6 +2,7 @@ package com.dbSpring.Spring_Database.controller;
 
 import com.dbSpring.Spring_Database.service.People;
 import com.dbSpring.Spring_Database.service.PeopleService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,7 +29,7 @@ public class PeopleController {
         return peopleDtoList;
     }
 
-    @PostMapping(consumes = "application/json")
+    @PostMapping(produces= MediaType.APPLICATION_JSON_VALUE)
     public PeopleDto save(@RequestBody @Valid PeopleCreateDto peopleCreateDto){
         return new PeopleDto(peopleService.create(peopleCreateDto.toPeople()));
     }
