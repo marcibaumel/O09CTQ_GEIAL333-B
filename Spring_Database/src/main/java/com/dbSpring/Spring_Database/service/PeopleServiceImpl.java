@@ -72,4 +72,16 @@ public class PeopleServiceImpl implements PeopleService {
         peopleRepository.save(people.toEntity());
     }
 
+    /*
+    @Override
+    public Iterable<? extends People> findAgeOrGrater(int age) {
+        List<People> rv = new ArrayList<>();
+        for( PeopleModel people :  peopleRepository.findAllByAgeGreaterThanEquals(age)){
+            rv.add(new People(people));
+        }
+        return rv;
+    }
+
+     */
+
 }
