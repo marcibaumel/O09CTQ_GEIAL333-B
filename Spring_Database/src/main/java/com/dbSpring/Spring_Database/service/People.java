@@ -2,6 +2,8 @@ package com.dbSpring.Spring_Database.service;
 
 import com.dbSpring.Spring_Database.repository.PeopleModel;
 
+import java.util.Optional;
+
 public class People {
     private Long id;
 
@@ -33,8 +35,7 @@ public class People {
         this.name = name;
     }
 
-    public People() {
-    }
+
 
     public People(PeopleModel people) {
         this.id = people.getId();

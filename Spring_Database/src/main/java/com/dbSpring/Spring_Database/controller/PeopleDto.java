@@ -1,5 +1,6 @@
 package com.dbSpring.Spring_Database.controller;
 
+import com.dbSpring.Spring_Database.repository.PeopleModel;
 import com.dbSpring.Spring_Database.service.People;
 
 import javax.validation.constraints.Min;
@@ -43,5 +44,9 @@ public class PeopleDto {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public People toEntity(){
+        return new People(id, age, name);
     }
 }

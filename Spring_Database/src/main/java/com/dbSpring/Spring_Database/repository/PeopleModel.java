@@ -1,5 +1,7 @@
 package com.dbSpring.Spring_Database.repository;
 
+import com.dbSpring.Spring_Database.service.People;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -41,12 +43,12 @@ public class PeopleModel {
     public PeopleModel() {
     }
 
-    /*
-    public People(hu.me.iit.webalk.db.service.People people) {
+
+    public PeopleModel(People people) {
         this.age = people.getAge();
         this.name = people.getName();
     }
-     */
+
 
     public PeopleModel(Long id, int age, String name) {
         this.id = id;
