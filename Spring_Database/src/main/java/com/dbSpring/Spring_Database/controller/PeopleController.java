@@ -48,7 +48,9 @@ public class PeopleController {
     public void updatePeople(@RequestBody @Valid PeopleDto peopleDto){
         peopleService.save(peopleDto.toEntity());
     }
-/*
+
+    //PATCH -> részleges update,
+    /*
     @GetMapping("/findByAge")
     public Iterable<PeopleDto> findAdultPeople(@RequestParam("age") int age){
         List<PeopleDto> peopleDtoList = new ArrayList<>();
