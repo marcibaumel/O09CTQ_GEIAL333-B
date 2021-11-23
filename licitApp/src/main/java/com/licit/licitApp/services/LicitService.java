@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 
 public interface LicitService {
     int actualHighestLicit();
-    int actualHighestLicitByUser(int userId);
+    //int actualHighestLicitByUser(int userId);
     void saveNewLicit(LicitDTO licitDTO);
 }

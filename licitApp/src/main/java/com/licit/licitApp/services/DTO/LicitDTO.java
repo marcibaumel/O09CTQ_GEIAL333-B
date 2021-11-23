@@ -1,5 +1,7 @@
 package com.licit.licitApp.services.DTO;
 
+import com.licit.licitApp.domain.LicitModel;
+
 public class LicitDTO {
 
     private Integer UserId;
@@ -24,5 +26,9 @@ public class LicitDTO {
     public LicitDTO(Integer userId, Integer licit) {
         UserId = userId;
         Licit = licit;
+    }
+
+    public LicitModel toEntityLicitModel(){
+        return new LicitModel(UserId, Licit);
     }
 }

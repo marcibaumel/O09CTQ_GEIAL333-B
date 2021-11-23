@@ -15,16 +15,17 @@ public class LicitController {
         this.licitService = licitService;
     }
 
+
     @GetMapping("/highest_licit")
     public int getActualHighestLicit(){
         return licitService.actualHighestLicit();
     }
-
+/*
     @GetMapping("/licit/highest/{user}")
     public int getActualHighestLicitByUser(@PathVariable("user") int userId){
         return licitService.actualHighestLicitByUser(userId);
     }
-
+*/
     @PostMapping
     public void saveNewLicit(@RequestBody @Valid SaveLicitDTO saveLicitDTO){
         licitService.saveNewLicit(saveLicitDTO.toLicitDTO());
