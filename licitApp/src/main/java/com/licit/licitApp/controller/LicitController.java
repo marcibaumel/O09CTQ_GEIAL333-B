@@ -2,6 +2,7 @@ package com.licit.licitApp.controller;
 
 import com.licit.licitApp.controller.DTO.SaveLicitDTO;
 import com.licit.licitApp.services.LicitService;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -15,18 +16,7 @@ public class LicitController {
         this.licitService = licitService;
     }
 
-
-    @GetMapping("/highest_licit")
-    public int getActualHighestLicit(){
-        return licitService.actualHighestLicit();
-    }
-/*
-    @GetMapping("/licit/highest/{user}")
-    public int getActualHighestLicitByUser(@PathVariable("user") int userId){
-        return licitService.actualHighestLicitByUser(userId);
-    }
-*/
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public void saveNewLicit(@RequestBody @Valid SaveLicitDTO saveLicitDTO){
         licitService.saveNewLicit(saveLicitDTO.toLicitDTO());
     }

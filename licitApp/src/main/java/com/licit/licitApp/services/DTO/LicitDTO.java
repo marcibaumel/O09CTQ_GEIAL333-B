@@ -7,6 +7,9 @@ public class LicitDTO {
     private Integer UserId;
     private Integer Licit;
 
+    public LicitDTO() {
+    }
+
     public Integer getUserId() {
         return UserId;
     }
