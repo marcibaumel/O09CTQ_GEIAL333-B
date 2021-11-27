@@ -1,12 +1,13 @@
 package com.licit.licitApp.repository;
 
-import com.licit.licitApp.domain.Licit;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.stereotype.Repository;
+import com.licit.licitApp.entity.Licit;
+import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-@Repository
-public interface LicitRepository  extends PagingAndSortingRepository<Licit, UUID> {
+public interface LicitRepository extends JpaRepository<Licit, UUID> {
+    List<Licit> findLicitsByUsernameAndItemName(String username, String itemName);
+    Optional<Licit> findFirstByUsernameAndAndItemNameOrderByLicitMoneyDesc(String username, String itemName);
 }
